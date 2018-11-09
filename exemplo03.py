@@ -23,3 +23,12 @@ if __name__ == '__main__':
         print("Nome: {}".format(linha.nome))
         for tel in linha.telefones_collection:
             print("Telefone: {}".format(tel.numero))
+
+    pessoas = session.query(Pessoa).all()
+
+    for linha in pessoas:
+        print('{}\t{}'.format(linha.idPessoa,linha.nome))
+
+        telefones = session.query(Telefones).filter(Telefones.idPessoa == linha.idPessoa)
+        for tel in telefones:
+            print('{}'.format(tel.numero))
