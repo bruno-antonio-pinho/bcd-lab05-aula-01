@@ -32,3 +32,7 @@ if __name__ == '__main__':
         telefones = session.query(Telefones).filter(Telefones.idPessoa == linha.idPessoa)
         for tel in telefones:
             print('{}'.format(tel.numero))
+
+    pessoas = session.query(Pessoa).filter(Pessoa.nome.ilike('J%')).all()
+    for pessoa in pessoas:
+        print('{}\t{}'.format(pessoa.idPessoa, pessoa.nome))
